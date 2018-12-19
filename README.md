@@ -261,4 +261,4 @@ LRN|learning|listening|LIS|unsynchronized)
 ```
 
 
-** Original source and README from [Feral Packet's blog](http://feralpacket.org/?p=299). **
+**Original source and README from [Feral Packet's blog](http://feralpacket.org/?p=299).**
