@@ -1,5 +1,4 @@
-SecureCRT Text Highlighting
----------------------------
+# SecureCRT Text Highlighting
 
 During my CCIE studies, I created a bunch of regular expressions to highlight the output of show commands. These will work with the show commands on IOS and IOS-XE images.
 
@@ -23,67 +22,82 @@ http://download.feralpacket.org/Lab%20Highlights.ini
 Note: Using the highlighting can lead to a habit of expecting the colors point out bad stuff. The highlighting is not going to be available during the CCIE lab. At least a month before your lab date, you should stop using the highlighting.
 
 
-SecureCRT Settings:
-- Session Options -> Terminal -> Appearance
--> Current color scheme
--> White / Black
--> Highlight keywords
--> Name: Lab Highlights
--> Style: Color is checked
-- Keyword List Properties
--> Match case is checked
-- To set for the default session:
--> Global Options -> General -> Default Session
--> Edit Default Settings...
+## SecureCRT Settings:
+
+- **Session Options**
+  - **Terminal**
+    - **Appearance**
+      - **Current color scheme**
+        - White / Black
+      - **Highlight keywords**
+        - Name: Lab Highlights
+        - Style: Color is checked
+        - **Keyword List Properties**
+          - Match case is checked
+
+## To set for the default session:
+- **Global Options**
+  - **General** 
+    - **Default Session**
+      - Edit Default Settings...
 
 The regular expressions:
 ------------------------
 
 
-! IPv4-mapped IPv6 Addresses
-```
+**IPv4-mapped IPv6 Addresses**
+
+```regexp
 (::FFFF)?::?(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])
 ```
 
-! VPNv6 Addresses
-```
+**VPNv6 Addresses**
+
+```regexp
 \[\d{1,10}:\d{1,10}\](?:(?:[0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}|(?=(?:[0-9A-Fa-f]{0,4}:){0,7}[0-9A-Fa-f]{0,4}(?![:.\w]))(([0-9A-Fa-f]{1,4}:){1,7}|:)((:[0-9A-Fa-f]{1,4}){1,7}|:)|(?:[0-9A-Fa-f]{1,4}:){7}:|:(:[0-9A-Fa-f]{1,4}){7})(?![:.\w])
 \[\d{1,3}(\.\d{1,3}){3}:\d{1,10}\](?:(?:[0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}|(?=(?:[0-9A-Fa-f]{0,4}:){0,7}[0-9A-Fa-f]{0,4}(?![:.\w]))(([0-9A-Fa-f]{1,4}:){1,7}|:)((:[0-9A-Fa-f]{1,4}){1,7}|:)|(?:[0-9A-Fa-f]{1,4}:){7}:|:(:[0-9A-Fa-f]{1,4}){7})(?![:.\w])
 ```
 
-! VPNv4 Addresses
-```
+**VPNv4 Addresses**
+
+```regexp
 (\d{1,10}:){2}(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])
 (?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]):\d{1,10}:(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])
 ```
 
-! IPv6 Addresses
-```
+**IPv6 Addresses**
+
+```regexp
 (?:(?:[0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}|(?=(?:[0-9A-Fa-f]{0,4}:){0,7}[0-9A-Fa-f]{0,4}(?![:.\w]))(([0-9A-Fa-f]{1,4}:){1,7}|:)((:[0-9A-Fa-f]{1,4}){1,7}|:)|(?:[0-9A-Fa-f]{1,4}:){7}:|:(:[0-9A-Fa-f]{1,4}){7})(?![:.\w])
 ```
 
-! Time
-```
+**Time**
+
+```regexp
 ((2[0-3]|[01][0-9])(:([0-5]?[0-9])){2}\.\d{3}|(2[0-3]|[01][0-9])(:([0-5]?[0-9])){1,2}|\d{1,4}d\d{2}h)
 ```
 
-! IP-address:nn RD or RT
-```
+**IP-address:nn RD or RT**
+
+```regexp
 (RT:)?(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]):\d{2,5}|(RT:)?(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]):[1-9])
 ```
 
-! ASN:nn RD or RT
-```
+**ASN:nn RD or RT**
+
+```regexp
 ((RT:)?\d{1,10}:\d{2,10}|(RT:)?\d{1,10}:[1-9])
 ```
 
-! IPv4 Addresses
-```
+**IPv4 Addresses**
+
+```regexp
 (?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])
 ```
 
-! Interfaces
-```
+**Interfaces**
+
+```regexp
 (GigabitEthernet\d/\d{1,2}\.\d{1,10}|GigabitEthernet\d/\d{1,2}|Gi\d/\d{1,2}\.\d{1,10}|Gi\d/\d{1,2}|G\d/\d{1,2}\.\d{1,10}|G\d/\d{1,2})
 (FastEthernet\d/\d{1,2}\.\d{1,10}|FastEthernet\d/\d{1,2}|Fa\d/\d{1,2}\.\d{1,10}|Fa\d/\d{1,2}|F\d/\d{1,2}\.\d{1,10}|F\d/\d{1,2})
 (Ethernet\d/\d{1,2}\.\d{1,10}|Ethernet\d/\d{1,2}|Et\d/\d{1,2}\.\d{1,10}|Et\d/\d{1,2}|E\d/\d{1,2}.\d{1,10}|E\d/\d{1,2})
@@ -92,21 +106,24 @@ The regular expressions:
 (Portchannel\d{1,2}|Po\d{1,2}|NVI\d{1,2}|Virtual-Template\d{1,3}|Virtual-Access\d{1,3}\.\d{1,10}|Virtual-Access\d{1,3}|Vi\d{1,3}\.\d{1,10}|Vi\d{1,3}|Multilink\d{1,10}|Mu\d{1,10}|Dialer\d{1,3}|Di\d{1,3}|BVI\d{1,3})
 ```
 
-! Bad responses
-```
+**Bad responses**
+
+```regexp
 (down|Down|DOWN|fail|failed|not|bad|never|BLK|fddi|n\-isl|isl|notconnect|blocking|\(tdp\)|tdp|TDP|denied|invalid|err\-disabled|unusable|DENIED)
 (err\-disable|infinity|inaccessible|\*ROOT_Inc|BKN\*|\*LOOP_Inc|wrong|cannot|MM_NO_STATE|MM_KEY_EXCH|UP\-NO\-IKE)
 (K[13]=(\d{2,3}|[02-9])|K[245]=(\d{2,3}|[1-9]))
 ```
 
-! Good responses
-```
+**Good responses**
+
+```regexp
 (rstp|best|ldp|CIST|QM_IDLE|(IP|L|CDP)CP\+|CHAP\+|PAP\+|(IP|L|CDP)CP\[Open\]|our_master|UP\-ACTIVE)
 (\*\>|FWD|root|Root|802\.1q|connected|LocalT|yes|\(ldp\)|ldp|\(SU\)|\(RU\)|forwarding|synchronized|active|rapid\-pvst|up|Up|UP|FULL)
 ```
 
-! Possible warnings and unusual things that deserve attention
-```
+**Possible warnings and unusual things that deserve attention**
+
+```regexp
 (errors|error|err|reset|act/unsup|dhcp|DHCP|mismatch|notconnect|drops|dropped|runts|CRC|collisions|collision|
 LRN|learning|listening|LIS|unsynchronized)
 (Peer\(STP\)|Shr|Edge|pvst|ieee|Bound\(PVST\)|TFTP|Mbgp|LAPB|l2ckt\(\d{1,10}\)|DCE|DTE|passive|\[ANY\]|r|RIB\-failure|discriminator|Standby)
@@ -114,83 +131,97 @@ LRN|learning|listening|LIS|unsynchronized)
 (Condition\-map|Advertise\-map|no\-advertise|no\-export|local\-AS|internet)
 ```
 
-! BGP
-```
+**BGP**
+
+```regexp
 (bgp|BGP|B|IGP|incomplete|\d{2,7}\/nolabel\(\w*\)|RR\-client|Originator|cluster\-id|Cluster\-id|Cluster|Route\-Reflector)
 %BGP\-\d\-\w*
 %BGP_SESSION\-\d\-\w*
 ```
 
-! OSPFv2 and OSPFv3
-```
+**OSPFv2 and OSPFv3**
+
+```regexp
 (OSPF_VL\d{1,2}|OSPF_SL\d{1,2}|VL\d{1,2}|SL\d{1,2}|Type\-\d|ospf|OSPF|O|IA|E[12]|N[12]|P2P|P2MP|BDR|DR|ABR|ASBR|LOOP|DROTHER)
 (POINT_TO_POINT|POINT_TO_MULTIPOINT|BROADCAST|NON_BROADCAST|LOOPBACK|SHAM_LINK|3101|1587|transit|Transit|nssa|NSSA|stub)
 (Stub|Superbackbone|OSPFv3_VL\d{1,2}|OSPFv3\-\d{1,5}\-IPv6|ospfv3|OSPFv3|OI|OE[12]|ON[12]|V6\-Bit|E\-Bit|R\-bit|DC\-Bit|opaque|DROTH)
 (%OSPF\-\d\-\w*|%OSPFV3\-\d\-\w*)
 ```
 
-! EIGRP
-```
+**EIGRP**
+
+```regexp
 (EIGRP\-IPv6|EIGRP\-IPv4|eigrp|EIGRP|EX|D|K[13]=1|K[245]=0|Internal|External)
 %DUAL\-\d\-\w*
 ```
 
-! RIP
-```
+**RIP**
+
+```regexp
 (rip|RIP|R)
 ```
 
-! PIM, MSDP, and IGMP
-```
+**PIM, MSDP, and IGMP**
+
+```regexp
 (PIM\/IPv4|RP\:|v2\/S|BSR)
 %PIM\-\d\-\w*
 %MSDP\-\d\-\w*
 %IGMP\-\d\-\w*
 ```
 
-! Lab hostnames
-```
+**Lab hostnames**
+
+```regexp
 (R\d{1,2}%\w*|R\d{1,2}|SW\d{1,2}|BB\d|BB|PE\d{1,2}|CE\d{1,2}|P\d{1,2}|FRS)
 ```
 
-! Routing table metrics
-```
+**Routing table metrics**
+
+```regexp
 \[\d{1,3}/\d{1,12}\]
 ```
 
-! EIGRP topology table metrics and ping responses
-```
+**EIGRP topology table metrics and ping responses**
+
+```regexp
 \(\d{1,12}/\d{1,12}\)
 ```
 
-! show ip traffic | show ipv6 traffic - still testing
-```
+**show ip traffic | show ipv6 traffic - still testing**
+
+```regexp
 (fragmented|fragments|fragment|drop:|reverse,|problem|unknown)
 ```
 
-! NHRP next-hop override
-```
+**NHRP next-hop override**
+
+```regexp
 (DT2|T2)
 ```
 
-! Bad - emergencies, alerts, and critical log messages
-```
+**Bad - emergencies, alerts, and critical log messages**
+
+```regexp
 %\w*\-[012]\-\w*
 ```
 
-! LDP
-```
+**LDP**
+
+```regexp
 %LDP\-\d\-\w*
 %LSD\-\d\-\w*
 ```
 
-! IPv6 Neighbor Discovery
-```
+**IPv6 Neighbor Discovery**
+
+```regexp
 %IPV6_ND\-\d\-\w*
 ```
 
-! Various log messages I turn yellow
-```
+**Various log messages I turn yellow**
+
+```regexp
 %CDP\-\d\-\w*
 %DHCP\-\d\-\w*
 %SPANTREE\-\d\-\w*
@@ -223,7 +254,8 @@ LRN|learning|listening|LIS|unsynchronized)
 %IP\-\d\-\w*
 ```
 
-! Catch-all for all other log messages
-```
+**Catch-all for all other log messages**
+
+```regexp
 %\w*\-\d\-\w*
 ```
