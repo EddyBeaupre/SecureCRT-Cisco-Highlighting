@@ -259,3 +259,6 @@ LRN|learning|listening|LIS|unsynchronized)
 ```regexp
 %\w*\-\d\-\w*
 ```
+
+
+** Original source and README from [Feral Packet's blog](http://feralpacket.org/?p=299). **
